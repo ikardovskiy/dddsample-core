@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -36,6 +37,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration(classes={InfrastructurePersistenceHibernateConfig.class})
 @TestPropertySource(locations = {"/application.properties", "/config/application.properties"})
 @Transactional
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_CLASS)
 public class HandlingEventRepositoryTest {
 
     @Autowired
